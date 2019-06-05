@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img {
+			position: absolute;
+		}
+
+		.stakan { 
+			transform: rotate(180deg);
+			margin-top: 5%;
+			width: 23%
+		 }
+	</style>
+</head>
+<body>
+	<button class="reload" style="position: absolute; margin-left: 43%">RELOAD</button>
+
+	<!--<img class="bones" src="bones.png" alt="" style=" margin-left: 15%; margin-top: 33%">
+    <img class="bones" src="bones.png" alt="" style=" margin-left: 43%; margin-top: 33%">-->
+	<img class="bones" src="bones.png" alt="" style=" margin-left: 70%; margin-top: 33%">
+
+	<img class="stakan" src="stak.png" style=" margin-left: 10%; ">
+	<img class="stakan" src="stak.png" style=" margin-left: 35%; ">
+	<img class="stakan" src="stak.png" style=" margin-left: 60%; ">
+
+</body>
+<script>
+	let bones = document.querySelector(".bones")
+	let stakan = document.querySelectorAll(".stakan")
+	let left
+	let random = function(){
+		let rand = Math.random()*2
+		let round = Math.round(rand)
+		return round
+	}
+	let pos = function(arg){
+		if(arg == 0){
+			left = '15%'
+		}
+		else if(arg == 1){
+			left = '40%'
+		}
+		else{
+			left = '65%'
+		}
+		return left
+	}	
+	let movement = function(){
+		bones.style.marginLeft = pos(random())
+	}
+	let move = setInterval(movement,200)
+	let stopm = function(){
+		clearInterval(move)
+		for(i = 0; i < 3; i = i + 1){
+			stakan[i].style.marginTop = "20%"
+		}
+	}
+	stakan[0].onclick = function(){
+		stakan[0].style.marginTop = "1%"
+		if(left == '15%'){
+			alert('u win')
+		}
+		else{
+			alert('u lose')
+		}
+	}
+	stakan[1].onclick = function(){
+		stakan[1].style.marginTop = "1%"
+		if(left == '40%'){
+			alert('u win')
+		}
+		else{
+			alert('u lose')
+		}
+	}
+	stakan[2].onclick = function(){
+		stakan[2].style.marginTop = "1%"
+		if(left == '65%'){
+			alert('u win')
+		}
+		else{
+			alert('u lose')
+		}
+	}
+	setTimeout(stopm,2100)
+</script>
+</html>
